@@ -1,24 +1,26 @@
 <?php
 
-function getHelp(): string
+namespace Gendiff\Gendiff;
+
+use Docopt;
+
+function launchGenDiff(): void
 {
     $doc = <<<'DOCOPT'
     Generate diff
 
     Usage:
-    gendiff (-h|--help)
-    gendiff (-v|--version)
+        gendiff (-h|--help)
+        gendiff (-v|--version)
+        gendiff [--format <fmt>] <firstFile> <secondFile>
 
     Options:
-    -h --help                     Show this screen
-    -v --version                  Show version
+        -h --help                     Show this screen
+        -v --version                  Show version
+        --format <fmt>                Report format [default: stylish]
     DOCOPT;
 
-    return $doc;
-}
+    $params = ['version' => 'gendiff 0.0.1'];
 
-function showHelp(): void
-{
-    echo getHelp();
-    echo PHP_EOL;
+    Docopt::handle($doc, $params);
 }
