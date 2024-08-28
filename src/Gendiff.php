@@ -11,14 +11,33 @@ function getJSONData(string $filePath): array
     return json_decode($file, true);
 }
 
+function formatResult(array $diff): string
+{
+    $lines = array_map(function ($item) {
+        $mark = match ($item['mark']) {
+            -1 => '-',
+            1 => '+',
+            default => ' ',
+        };
+        $value = match($item['value']) {
+            true => 'true',
+            false => 'false',
+            default => $item['value'],
+        };
+        return " {$mark} {$item['key']}: {$value}";
+    }, $diff);
+    $result = implode("\n", $lines);
+        return "{\n{$result}\n}";
+}
+
 function genDiff (string $filePath1, string $filePath2): string
 {
     $data1 = getJSONData($filePath1);
     $data2 = getJSONData($filePath2);
 
-    $resultArray = compareArrays($data1, $data2); //todo result format
+    $resultArray = compareArrays($data1, $data2);
 
-    return json_encode($resultArray);
+    return formatResult($resultArray);
 }
 
 function launchGenDiff(): void
