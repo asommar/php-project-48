@@ -4,8 +4,11 @@ namespace Gendiff\CompareArrays;
 
 function putDiffMark(array $array, int $mark): array
 {
-    return array_map(fn ($key, $value) => ['key' => $key, 'value' => $value, 'mark' => $mark],
-        array_keys($array), array_values($array));
+    return array_map(
+        fn ($key, $value) => ['key' => $key, 'value' => $value, 'mark' => $mark],
+        array_keys($array),
+        array_values($array)
+    );
 }
 
 function compareArrays(array $array1, array $array2): array

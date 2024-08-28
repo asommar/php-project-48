@@ -3,6 +3,7 @@
 namespace Gendiff\Gendiff;
 
 use Docopt;
+
 use function Gendiff\CompareArrays\compareArrays;
 
 function getJSONData(string $filePath): array
@@ -19,7 +20,7 @@ function formatResult(array $diff): string
             1 => '+',
             default => ' ',
         };
-        $value = match($item['value']) {
+        $value = match ($item['value']) {
             true => 'true',
             false => 'false',
             default => $item['value'],
@@ -30,7 +31,7 @@ function formatResult(array $diff): string
         return "{\n{$result}\n}";
 }
 
-function genDiff (string $filePath1, string $filePath2): string
+function genDiff(string $filePath1, string $filePath2): string
 {
     $data1 = getJSONData($filePath1);
     $data2 = getJSONData($filePath2);
@@ -58,5 +59,8 @@ function launchGenDiff(): void
 
     $params = ['version' => 'gendiff 0.0.1'];
 
-    Docopt::handle($doc, $params);
+    $command = Docopt::handle($doc, $params);
+    //todo if need check the answer
+    $result = genDiff($command['<firstFile>'], $command['<secondFile>']) . PHP_EOL;
+    print_r($result);
 }
