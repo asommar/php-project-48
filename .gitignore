@@ -2,3 +2,5 @@
 .idea
 notes.txt
 phpstan.neon
+.phpunit.cache
+coverage.xml

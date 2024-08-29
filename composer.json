@@ -24,5 +24,10 @@
     },
     "require": {
         "docopt/docopt": "^1.0"
+    },
+    "scripts": {
+        "test": [
+            "XDEBUG_MODE=coverage phpunit Tests --coverage-clover coverage.xml"
+        ]
     }
 }
