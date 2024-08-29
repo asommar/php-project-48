@@ -12,13 +12,19 @@ jobs:
       # checkout — клонирует репозиторий
       - uses: actions/checkout@v3
       # run – произвольная bash-команда
+      - name: Setup PHP
+          # Action gives to setup the PHP environment to test application
+          # https://github.com/shivammathur/setup-php
+        uses: shivammathur/setup-php@v2
+        with:
+            # Specify the PHP version
+          php-version: '8.2'
       - run: make install
       - run: make lint
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v9.0.0
         env:
           CC_TEST_REPORTER_ID: $CC_TEST_REPORTER_ID
-          XDEBUG_MODE: coverage
         with:
-            coverageCommand: phpunit Tests --coverage-clover coverage.xml
+            coverageCommand: make test
             debug: true
