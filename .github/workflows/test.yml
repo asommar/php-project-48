@@ -19,5 +19,5 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: $CC_TEST_REPORTER_ID
         with:
-            coverageCommand: make test
+            coverageCommand: composer run test
             debug: true
