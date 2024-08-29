@@ -18,16 +18,23 @@
     "autoload": {
         "files": [
             "src/Differ.php",
-            "src/CompareArrays.php",
-            "Tests/GenDiffTest.php"
+            "src/CompareArrays.php"
         ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Differ\\Tests\\": "Tests"
+        }
     },
     "require": {
         "docopt/docopt": "^1.0"
     },
     "scripts": {
-        "test": [
+        "test-coverage": [
             "XDEBUG_MODE=coverage phpunit Tests --coverage-clover coverage.xml"
+        ],
+        "test-coverage-html": [
+            "XDEBUG_MODE=coverage phpunit Tests --coverage-html cov.html"
         ]
     }
 }

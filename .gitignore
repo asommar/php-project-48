@@ -4,3 +4,4 @@ notes.txt
 phpstan.neon
 .phpunit.cache
 coverage.xml
+cov.html

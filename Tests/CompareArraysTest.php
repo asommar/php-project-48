@@ -1,12 +1,11 @@
 <?php
 
-namespace Gendiff\Tests;
+namespace Differ\Tests;
 
 use PHPUnit\Framework\TestCase;
 use function Differ\CompareArrays\compareArrays;
-use function Differ\Differ\genDiff;
 
-class GendiffTest extends TestCase
+class CompareArraysTest extends TestCase
 {
     public function testCompareArrays():void
     {
@@ -30,11 +29,5 @@ class GendiffTest extends TestCase
             ['key' => 'verbose', 'value' => true, 'mark' => 1]
         ];
         $this->assertEquals($expected, compareArrays($arr1, $arr2));
-    }
-    public function testGendiff(): void
-    {
-        $diff = "{\n - follow: false\n   host: hexlet.io\n - proxy: 123.234.53.22\n - timeout: 50\n + timeout: 20\n + verbose: true\n}";
-        $actual = genDiff("Tests/TestFiles/file1.json", "Tests/TestFiles/file2.json");
-        $this->assertEquals($diff, $actual);
     }
 }
