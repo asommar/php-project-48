@@ -17,7 +17,7 @@
     ],
     "autoload": {
         "files": [
-            "src/Gendiff.php",
+            "src/Differ.php",
             "src/CompareArrays.php",
             "Tests/GenDiffTest.php"
         ]

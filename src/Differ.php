@@ -1,10 +1,10 @@
 <?php
 
-namespace Gendiff\Gendiff;
+namespace Differ\Differ;
 
 use Docopt;
 
-use function Gendiff\CompareArrays\compareArrays;
+use function Differ\CompareArrays\compareArrays;
 
 function getJSONData(string $filePath): array
 {

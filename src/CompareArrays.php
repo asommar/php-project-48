@@ -1,6 +1,6 @@
 <?php
 
-namespace Gendiff\CompareArrays;
+namespace Differ\CompareArrays;
 
 function putDiffMark(array $array, int $mark): array
 {

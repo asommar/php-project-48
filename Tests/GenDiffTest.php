@@ -3,8 +3,8 @@
 namespace Gendiff\Tests;
 
 use PHPUnit\Framework\TestCase;
-use function Gendiff\CompareArrays\compareArrays;
-use function Gendiff\Gendiff\genDiff;
+use function Differ\CompareArrays\compareArrays;
+use function Differ\Differ\genDiff;
 
 class GendiffTest extends TestCase
 {
