@@ -22,3 +22,4 @@ jobs:
         with:
             coverageCommand: make test-coverage
             debug: false
+            coverageLocations: build/logs/clover.xml:clover
