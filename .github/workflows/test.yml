@@ -18,6 +18,7 @@ jobs:
         uses: paambaati/codeclimate-action@v9.0.0
         env:
           CC_TEST_REPORTER_ID: $CC_TEST_REPORTER_ID
+          XDEBUG_MODE: coverage
         with:
-            coverageCommand: XDEBUG_MODE=coverage phpunit Tests --coverage-clover coverage.xml
+            coverageCommand: phpunit Tests --coverage-clover coverage.xml
             debug: true
