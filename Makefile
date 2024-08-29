@@ -5,6 +5,6 @@ lint:
 fix-lint:
 	composer exec --verbose phpcbf -- --standard=PSR12 src bin;
 test:
-	composer exec --verbose phpunit Tests
+	composer run test;
 stan:
 	vendor/bin/phpstan analyse src Tests --level=8;
