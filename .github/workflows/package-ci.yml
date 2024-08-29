@@ -1,4 +1,4 @@
-name: Test
+name: Package CI
 # on – определяет события, которые запускают воркфлоу
 on: push
 jobs:
@@ -22,4 +22,4 @@ jobs:
         with:
             coverageCommand: make test-coverage
             debug: false
-            coverageLocations: build/logs/clover.xml:clover
+            coverageLocations:  ${{github.workspace}}/coverage.xml:clover
