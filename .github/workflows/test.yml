@@ -19,5 +19,5 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: $CC_TEST_REPORTER_ID
         with:
-            coverageCommand: composer run test
+            coverageCommand: XDEBUG_MODE=coverage phpunit Tests --coverage-clover coverage.xml
             debug: true
