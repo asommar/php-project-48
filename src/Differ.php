@@ -5,12 +5,7 @@ namespace Differ\Differ;
 use Docopt;
 
 use function Differ\CompareArrays\compareArrays;
-
-function getJSONData(string $filePath): array
-{
-    $file = file_get_contents($filePath);
-    return json_decode($file, true);
-}
+use function Differ\Parsers\getFileData;
 
 function formatResult(array $diff): string
 {
@@ -33,8 +28,8 @@ function formatResult(array $diff): string
 
 function genDiff(string $filePath1, string $filePath2): string
 {
-    $data1 = getJSONData($filePath1);
-    $data2 = getJSONData($filePath2);
+    $data1 = getFileData($filePath1);
+    $data2 = getFileData($filePath2);
 
     $resultArray = compareArrays($data1, $data2);
 

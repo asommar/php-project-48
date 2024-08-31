@@ -18,7 +18,8 @@
     "autoload": {
         "files": [
             "src/Differ.php",
-            "src/CompareArrays.php"
+            "src/CompareArrays.php",
+            "src/Parsers.php"
         ]
     },
     "autoload-dev": {
@@ -27,7 +28,8 @@
         }
     },
     "require": {
-        "docopt/docopt": "^1.0"
+        "docopt/docopt": "^1.0",
+        "symfony/yaml": "^6.4"
     },
     "scripts": {
         "test-coverage": [
