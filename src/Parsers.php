@@ -11,9 +11,9 @@ function getFileData(string $filePath): array
         throw new \Exception("No such file or directory: '{$filePath}'");
     }
 
-    if (str_ends_with(strtolower($filePath),'.json')) {
+    if (str_ends_with(strtolower($filePath), '.json')) {
         $result = json_decode($file, true);
-    } elseif(str_ends_with(strtolower($filePath),'.yaml') || str_ends_with(strtolower($filePath),'.yml')) {
+    } elseif (str_ends_with(strtolower($filePath), '.yaml') || str_ends_with(strtolower($filePath), '.yml')) {
         $result = Yaml::parseFile($filePath);
     } else {
         throw new \Exception("File '{$filePath}' has unsupported extension");
