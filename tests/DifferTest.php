@@ -2,8 +2,8 @@
 
 namespace Differ\Tests;
 
-
 use PHPUnit\Framework\TestCase;
+
 use function Differ\Differ\genDiff;
 
 class DifferTest extends TestCase
@@ -16,7 +16,16 @@ class DifferTest extends TestCase
 
     public function testGenDiff(): void
     {
-        $diff = "{\n - follow: false\n   host: hexlet.io\n - proxy: 123.234.53.22\n - timeout: 50\n + timeout: 20\n + verbose: true\n}";
+        $diff = implode("\n", [
+            "{",
+            " - follow: false",
+            "   host: hexlet.io",
+            " - proxy: 123.234.53.22",
+            " - timeout: 50",
+            " + timeout: 20",
+            " + verbose: true",
+            "}"
+        ]);
         $actual1 = genDiff($this->getFixtureFullPath("flat1.json"), $this->getFixtureFullPath("flat2.json"));
         $this->assertEquals($diff, $actual1);
         $actual2 = genDiff($this->getFixtureFullPath("flat1.yml"), $this->getFixtureFullPath("flat2.yaml"));

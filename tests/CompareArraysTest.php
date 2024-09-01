@@ -3,11 +3,12 @@
 namespace Differ\Tests;
 
 use PHPUnit\Framework\TestCase;
+
 use function Differ\CompareArrays\compareArrays;
 
 class CompareArraysTest extends TestCase
 {
-    public function testCompareArrays():void
+    public function testCompareArrays(): void
     {
         $arr1 = [
             "host" => "hexlet.io",
