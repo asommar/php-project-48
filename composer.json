@@ -33,10 +33,10 @@
     },
     "scripts": {
         "test-coverage": [
-            "XDEBUG_MODE=coverage phpunit Tests --coverage-clover coverage.xml"
+            "XDEBUG_MODE=coverage phpunit tests --coverage-clover coverage.xml"
         ],
         "test-coverage-html": [
-            "XDEBUG_MODE=coverage phpunit Tests --coverage-html cov.html"
+            "XDEBUG_MODE=coverage phpunit tests --coverage-html cov.html"
         ]
     }
 }
