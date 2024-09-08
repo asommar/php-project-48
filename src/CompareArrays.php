@@ -17,9 +17,7 @@ function compareArrays(array $array1, array $array2): array
     $diff1 = putdiffMark(array_diff_assoc($array1, $array2), -1);
     $diff2 = putdiffMark(array_diff_assoc($array2, $array1), 1);
     $result = array_merge_recursive($common, $diff1, $diff2);
-    usort($result, function ($a, $b) {
+    return \Functional\sort($result, function ($a, $b) {
         return ($a['key'] <=> $b['key']) ?: ($a['mark'] <=> $b['mark']);
     });
-
-    return $result;
 }

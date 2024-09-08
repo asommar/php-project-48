@@ -2,8 +2,6 @@
 
 namespace Differ\Differ;
 
-use Docopt;
-
 use function Differ\CompareArrays\compareArrays;
 use function Differ\Parsers\getFileData;
 
@@ -34,28 +32,4 @@ function genDiff(string $filePath1, string $filePath2): string
     $resultArray = compareArrays($data1, $data2);
 
     return formatResult($resultArray);
-}
-
-function launchGenDiff(): void
-{
-    $doc = <<<'DOCOPT'
-    Generate diff
-
-    Usage:
-        gendiff (-h|--help)
-        gendiff (-v|--version)
-        gendiff [--format <fmt>] <firstFile> <secondFile>
-
-    Options:
-        -h --help                     Show this screen
-        -v --version                  Show version
-        --format <fmt>                Report format [default: stylish]
-    DOCOPT;
-
-    $params = ['version' => 'gendiff 0.0.1'];
-
-    $command = Docopt::handle($doc, $params);
-    //todo if need check the answer
-    $result = genDiff($command['<firstFile>'], $command['<secondFile>']) . PHP_EOL;
-    print_r($result);
 }
