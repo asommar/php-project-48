@@ -1,7 +1,7 @@
 {
     "name": "hexlet/code",
     "description": "generate diff between two files",
-    "type": "project",
+    "type": "library",
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.10",
         "phpstan/phpstan": "^1.12",
@@ -24,7 +24,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Differ\\Tests\\": "Tests"
+            "Tests\\": "tests"
         }
     },
     "require": {
