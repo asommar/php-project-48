@@ -2,7 +2,7 @@
 
 namespace Differ\Differ;
 
-use function Differ\CompareArrays\compareArrays;
+use function Differ\CompareArrays\compareTrees;
 use function Differ\Parsers\getFileData;
 
 function formatResult(array $diff): string
@@ -29,7 +29,7 @@ function genDiff(string $filePath1, string $filePath2): string
     $data1 = getFileData($filePath1);
     $data2 = getFileData($filePath2);
 
-    $resultArray = compareArrays($data1, $data2);
+    $resultArray = compareTrees($data1, $data2);
 
     return formatResult($resultArray);
 }

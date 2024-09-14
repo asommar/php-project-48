@@ -4,7 +4,7 @@ namespace Tests;
 
 use PHPUnit\Framework\TestCase;
 
-use function Differ\CompareArrays\compareArrays;
+use function Differ\CompareArrays\compareTrees;
 
 class CompareArraysTest extends TestCase
 {
@@ -29,6 +29,35 @@ class CompareArraysTest extends TestCase
             ['key' => 'timeout', 'value' => 20, 'mark' => 1],
             ['key' => 'verbose', 'value' => true, 'mark' => 1]
         ];
-        $this->assertEquals($expected, compareArrays($arr1, $arr2));
+        $this->assertEquals($expected, compareTrees($arr1, $arr2));
+    }
+
+    public function testCompareArraysNested(): void
+    {
+        $arr1 = [
+            "common" => [
+                "setting1" => "Value 1",
+                "setting2" => 200,
+                "setting3" => true,
+            ]
+        ];
+        $arr2 = [
+            "common" => [
+                "setting1" => "Value 1",
+                "follow" => false,
+                "setting3" => null,
+            ]
+        ];
+        $expected = [
+            ['key' => 'common', 'value' => [
+                ['key' => 'follow', 'value' => false, 'mark' => 1],
+                ['key' => 'setting1', 'value' => "Value 1", 'mark' => 0],
+                ['key' => 'setting2', 'value' => 200, 'mark' => -1],
+                ['key' => 'setting3', 'value' => true, 'mark' => -1],
+                ['key' => 'setting3', 'value' => null, 'mark' => 1]
+            ], 'mark' => 0]
+        ];
+        $actual =  compareTrees($arr1, $arr2);
+        $this->assertEquals($expected, $actual);
     }
 }
