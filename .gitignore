@@ -3,5 +3,6 @@
 notes.txt
 phpstan.neon
 .phpunit.cache
+.phpunit.result.cache
 coverage.xml
 cov.html

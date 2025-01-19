@@ -3,26 +3,8 @@
 namespace Differ\Differ;
 
 use function Differ\CompareArrays\compareTrees;
+use function Differ\Formatter\formatResult;
 use function Differ\Parsers\getFileData;
-
-function formatResult(array $diff): string
-{
-    $lines = array_map(function ($item) {
-        $mark = match ($item['mark']) {
-            -1 => '-',
-            1 => '+',
-            default => ' ',
-        };
-        $value = match ($item['value']) {
-            true => 'true',
-            false => 'false',
-            default => $item['value'],
-        };
-        return " {$mark} {$item['key']}: {$value}";
-    }, $diff);
-    $result = implode("\n", $lines);
-        return "{\n{$result}\n}";
-}
 
 function genDiff(string $filePath1, string $filePath2): string
 {

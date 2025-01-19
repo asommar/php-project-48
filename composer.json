@@ -20,7 +20,9 @@
         "files": [
             "src/Differ.php",
             "src/CompareArrays.php",
-            "src/Parsers.php"
+            "src/Parsers.php",
+            "src/Formatter.php",
+            "src/Formatters/Stylish.php"
         ]
     },
     "autoload-dev": {
