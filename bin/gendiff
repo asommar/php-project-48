@@ -6,6 +6,8 @@ use function Differ\Differ\genDiff;
 $autoloadPath1 = __DIR__ . '/../../../autoload.php';
 $autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
 
+const DEFAULT_FORMAT = 'stylish';
+
 if (file_exists($autoloadPath1)) {
     require_once $autoloadPath1;
 } else {
@@ -31,5 +33,6 @@ $params = ['version' => 'gendiff 0.0.1'];
 
 $command = Docopt::handle($doc, $params);
 //todo if need check the answer
-$result = genDiff($command['<firstFile>'], $command['<secondFile>']) . PHP_EOL;
+$format = $command['--format'] ?? DEFAULT_FORMAT;
+$result = genDiff($command['<firstFile>'], $command['<secondFile>'], $format) . PHP_EOL;
 print_r($result);

@@ -14,14 +14,34 @@ class DifferTest extends TestCase
         return realpath(implode('/', $parts));
     }
 
-    public function testGenDiff(): void
+    private function testGenDiff(string $format): void
     {
-        $diff = file_get_contents($this->getFixtureFullPath("stylish.txt"));
-        $actual1 = genDiff($this->getFixtureFullPath("nested1.json"), $this->getFixtureFullPath("nested2.json"));
+        $diff = file_get_contents($this->getFixtureFullPath("{$format}.txt"));
+
+        $actual1 = genDiff(
+            $this->getFixtureFullPath("nested1.json"),
+            $this->getFixtureFullPath("nested2.json"),
+            $format
+        );
         $this->assertEquals($diff, $actual1);
-        $actual2 = genDiff($this->getFixtureFullPath("nested1.yaml"), $this->getFixtureFullPath("nested2.yaml"));
+
+        $actual2 = genDiff(
+            $this->getFixtureFullPath("nested1.yaml"),
+            $this->getFixtureFullPath("nested2.yaml"),
+            $format
+        );
         $this->assertEquals($diff, $actual2);
-        $actual3 = genDiff($this->getFixtureFullPath("nested1.json"), $this->getFixtureFullPath("nested2.yaml"));
+
+        $actual3 = genDiff(
+            $this->getFixtureFullPath("nested1.json"),
+            $this->getFixtureFullPath("nested2.yaml"),
+            $format
+        );
         $this->assertEquals($diff, $actual3);
+    }
+
+    public function testStylish(): void
+    {
+        $this->testGenDiff('stylish');
     }
 }
