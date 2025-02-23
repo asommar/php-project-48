@@ -2,9 +2,10 @@
 
 namespace Differ\CompareArrays;
 
-function putDiffMark(mixed $key, mixed $value, int $mark): array
+function putDiffMark(mixed $key, mixed $value, int $mark, bool $isUpdatedValue = null, mixed $newValue = null): array
 {
-    return ['key' => $key, 'value' => $value, 'mark' => $mark];
+    return ['key' => $key, 'value' => $value, 'mark' => $mark,
+        'newValue' => $newValue, 'isUpdatedValue' => $isUpdatedValue];
 }
 
 function compareTrees(array $array1, array $array2): array
@@ -17,7 +18,6 @@ function compareTrees(array $array1, array $array2): array
         //key1 exist, key2 not
         if ($keyExist1 && !$keyExist2) {
             return [...$carry, putDiffMark($key, $array1[$key], -1)];
-            //need to think is value scalar or array
         }
         //key2 exit, key1 not
         if (!$keyExist1 && $keyExist2) {
@@ -38,8 +38,8 @@ function compareTrees(array $array1, array $array2): array
         //not equal
         //first with -1
         //second with 1
-        $deleted = putDiffMark($key, $value1, -1);
-        $added = putDiffMark($key, $value2, 1);
+        $deleted = putDiffMark($key, $value1, -1, true, $value2);
+        $added = putDiffMark($key, $value2, 1, false);
         return [...$carry, $deleted, $added];
     }, []);
 }

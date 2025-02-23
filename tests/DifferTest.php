@@ -44,4 +44,9 @@ class DifferTest extends TestCase
     {
         $this->testGenDiff('stylish');
     }
+
+    public function testPlain(): void
+    {
+        $this->testGenDiff('plain');
+    }
 }
