@@ -8,12 +8,6 @@ use function Differ\Differ\genDiff;
 
 class DifferTest extends TestCase
 {
-    private function getFixtureFullPath(string $fixtureName): string
-    {
-        $parts = [__DIR__, 'fixtures', $fixtureName];
-        return realpath(implode('/', $parts));
-    }
-
     private function testGenDiff(string $format): void
     {
         $diff = file_get_contents($this->getFixtureFullPath("{$format}.txt"));
@@ -29,6 +23,12 @@ class DifferTest extends TestCase
 
         $actual3 = genDiff($jsonPath1, $yamlPath2, $format);
         $this->assertEquals($diff, $actual3);
+    }
+
+    private function getFixtureFullPath(string $fixtureName): string
+    {
+        $parts = [__DIR__, 'fixtures', $fixtureName];
+        return realpath(implode('/', $parts));
     }
 
     public function testStylish(): void
