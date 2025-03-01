@@ -33,7 +33,7 @@ class DifferTest extends TestCase
         $actual4 = genDiff($yamlPath1, $jsonPath2, $format);
         $this->assertEquals($diff, $actual4);
     }
-    public function testDiffer(): void
+    public function testGenDiff(): void
     //public function testStylish(): void
     {
         $this->testFormat('stylish');
