@@ -27,6 +27,11 @@ class DifferTest extends TestCase
         $actual2 = genDiff($yamlPath1, $yamlPath2, $format);
         $this->assertEquals($diff, $actual2);
 
+        var_dump($jsonPath1);
+        var_dump($jsonPath2);
+        var_dump($yamlPath1);
+        var_dump($yamlPath2);
+        var_dump($format);
         $actual3 = genDiff($jsonPath1, $yamlPath2, $format);
         $this->assertEquals($diff, $actual3);
     }
