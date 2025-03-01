@@ -1,0 +1,176 @@
+[
+    {
+        "key": "common",
+        "value": [
+            {
+                "key": "follow",
+                "value": false,
+                "mark": 1,
+                "newValue": null,
+                "isUpdatedValue": null
+            },
+            {
+                "key": "setting1",
+                "value": "Value 1",
+                "mark": 0,
+                "newValue": null,
+                "isUpdatedValue": null
+            },
+            {
+                "key": "setting2",
+                "value": 200,
+                "mark": -1,
+                "newValue": null,
+                "isUpdatedValue": null
+            },
+            {
+                "key": "setting3",
+                "value": true,
+                "mark": -1,
+                "newValue": null,
+                "isUpdatedValue": true
+            },
+            {
+                "key": "setting3",
+                "value": null,
+                "mark": 1,
+                "newValue": null,
+                "isUpdatedValue": false
+            },
+            {
+                "key": "setting4",
+                "value": "blah blah",
+                "mark": 1,
+                "newValue": null,
+                "isUpdatedValue": null
+            },
+            {
+                "key": "setting5",
+                "value": {
+                    "key5": "value5"
+                },
+                "mark": 1,
+                "newValue": null,
+                "isUpdatedValue": null
+            },
+            {
+                "key": "setting6",
+                "value": [
+                    {
+                        "key": "doge",
+                        "value": [
+                            {
+                                "key": "wow",
+                                "value": "",
+                                "mark": -1,
+                                "newValue": "so much",
+                                "isUpdatedValue": true
+                            },
+                            {
+                                "key": "wow",
+                                "value": "so much",
+                                "mark": 1,
+                                "newValue": null,
+                                "isUpdatedValue": false
+                            }
+                        ],
+                        "mark": 0,
+                        "newValue": null,
+                        "isUpdatedValue": null
+                    },
+                    {
+                        "key": "key",
+                        "value": "value",
+                        "mark": 0,
+                        "newValue": null,
+                        "isUpdatedValue": null
+                    },
+                    {
+                        "key": "ops",
+                        "value": "vops",
+                        "mark": 1,
+                        "newValue": null,
+                        "isUpdatedValue": null
+                    }
+                ],
+                "mark": 0,
+                "newValue": null,
+                "isUpdatedValue": null
+            }
+        ],
+        "mark": 0,
+        "newValue": null,
+        "isUpdatedValue": null
+    },
+    {
+        "key": "group1",
+        "value": [
+            {
+                "key": "baz",
+                "value": "bas",
+                "mark": -1,
+                "newValue": "bars",
+                "isUpdatedValue": true
+            },
+            {
+                "key": "baz",
+                "value": "bars",
+                "mark": 1,
+                "newValue": null,
+                "isUpdatedValue": false
+            },
+            {
+                "key": "foo",
+                "value": "bar",
+                "mark": 0,
+                "newValue": null,
+                "isUpdatedValue": null
+            },
+            {
+                "key": "nest",
+                "value": {
+                    "key": "value"
+                },
+                "mark": -1,
+                "newValue": "str",
+                "isUpdatedValue": true
+            },
+            {
+                "key": "nest",
+                "value": "str",
+                "mark": 1,
+                "newValue": null,
+                "isUpdatedValue": false
+            }
+        ],
+        "mark": 0,
+        "newValue": null,
+        "isUpdatedValue": null
+    },
+    {
+        "key": "group2",
+        "value": {
+            "abc": 12345,
+            "deep": {
+                "id": 45
+            }
+        },
+        "mark": -1,
+        "newValue": null,
+        "isUpdatedValue": null
+    },
+    {
+        "key": "group3",
+        "value": {
+            "deep": {
+                "id": {
+                    "number": 45
+                }
+            },
+            "fee": 100500
+        },
+        "mark": 1,
+        "newValue": null,
+        "isUpdatedValue": null
+    }
+]

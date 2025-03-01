@@ -49,4 +49,9 @@ class DifferTest extends TestCase
     {
         $this->testGenDiff('plain');
     }
+
+    public function testJson(): void
+    {
+        $this->testGenDiff('json');
+    }
 }
