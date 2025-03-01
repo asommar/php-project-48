@@ -16,17 +16,14 @@ class DifferTest extends TestCase
 
     private function testGenDiff(string $format): void
     {
-        if (!$format) {
-            $format = 'stylish';
-        }
         $diff = file_get_contents($this->getFixtureFullPath("{$format}.txt"));
-        $jsonPath1 = $this->getFixtureFullPath("nested1.json");
-        $jsonPath2 = $this->getFixtureFullPath("nested2.json");
+        $jsonPath1 = $this->getFixtureFullPath("file1.json");
+        $jsonPath2 = $this->getFixtureFullPath("file2.json");
         $actual1 = genDiff($jsonPath1, $jsonPath2, $format);
         $this->assertEquals($diff, $actual1);
 
-        $yamlPath1 = $this->getFixtureFullPath("nested1.yaml");
-        $yamlPath2 = $this->getFixtureFullPath("nested2.yaml");
+        $yamlPath1 = $this->getFixtureFullPath("file1.yaml");
+        $yamlPath2 = $this->getFixtureFullPath("file2.yaml");
         $actual2 = genDiff($yamlPath1, $yamlPath2, $format);
         $this->assertEquals($diff, $actual2);
 
