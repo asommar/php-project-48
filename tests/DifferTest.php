@@ -10,7 +10,7 @@ class DifferTest extends TestCase
 {
     private function testGenDiff(string $format): void
     {
-        $diff = file_get_contents($this->getFixtureFullPath("{$format}.txt"));
+        $diff = file_get_contents($this->getFixtureFullPath("$format.txt"));
         $jsonPath1 = $this->getFixtureFullPath("file1.json");
         $jsonPath2 = $this->getFixtureFullPath("file2.json");
         $actual1 = genDiff($jsonPath1, $jsonPath2, $format);
@@ -24,7 +24,7 @@ class DifferTest extends TestCase
         $actual3 = genDiff($jsonPath1, $yamlPath2, $format);
         $this->assertEquals($diff, $actual3);
 
-        $actual4 = genDiff($jsonPath2, $yamlPath1, $format);
+        $actual4 = genDiff($yamlPath1, $jsonPath2, $format);
         $this->assertEquals($diff, $actual4);
     }
 
