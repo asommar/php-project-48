@@ -14,7 +14,7 @@ class DifferTest extends TestCase
         return realpath(implode('/', $parts));
     }
 
-    private function testFormat(string $format): void
+    private function testGenDiff(string $format): void
     {
         $diff = file_get_contents($this->getFixtureFullPath("$format.txt"));
         $jsonPath1 = $this->getFixtureFullPath("file1.json");
@@ -33,19 +33,19 @@ class DifferTest extends TestCase
         $actual4 = genDiff($yamlPath1, $jsonPath2, $format);
         $this->assertEquals($diff, $actual4);
     }
-    public function testGenDiff(): void
-    //public function testStylish(): void
+
+    public function testStylish(): void
     {
-        $this->testFormat('stylish');
-    //}
+        $this->testGenDiff('stylish');
+    }
 
-//    public function testPlain(): void
-//    {
-        $this->testFormat('plain');
-//    }
+    public function testPlain(): void
+    {
+        $this->testGenDiff('plain');
+    }
 
-//    public function testFormat(): void
-//    {
-        $this->testFormat('json');
+    public function testJson(): void
+    {
+        $this->testGenDiff('json');
     }
 }
