@@ -23,6 +23,9 @@ class DifferTest extends TestCase
 
         $actual3 = genDiff($jsonPath1, $yamlPath2, $format);
         $this->assertEquals($diff, $actual3);
+
+        $actual4 = genDiff($jsonPath2, $yamlPath1, $format);
+        $this->assertEquals($diff, $actual4);
     }
 
     private function getFixtureFullPath(string $fixtureName): string
