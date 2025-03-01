@@ -8,6 +8,7 @@ use function Differ\Differ\genDiff;
 
 class DifferTest extends TestCase
 {
+
     private function getFixtureFullPath(string $fixtureName): string
     {
         $parts = [__DIR__, 'fixtures', $fixtureName];
