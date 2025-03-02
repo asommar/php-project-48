@@ -11,7 +11,7 @@ use Symfony\Component\Yaml\Yaml;
 function getFileData(string $filePath): array
 {
     if (file_exists($filePath) === false) {
-        throw new Exception("No such file or directory: '{$filePath}'");
+        throw new Exception("No such file or directory: '{$filePath}'\n");
     }
 
     $file = file_get_contents($filePath);
@@ -21,7 +21,7 @@ function getFileData(string $filePath): array
     } elseif (str_ends_with(strtolower($filePath), '.yaml') || str_ends_with(strtolower($filePath), '.yml')) {
         $result = Yaml::parseFile($filePath);
     } else {
-        throw new Exception("File '{$filePath}' has unsupported extension");
+        throw new Exception("File '{$filePath}' has unsupported extension\n");
     }
 
     return $result;

@@ -16,6 +16,6 @@ function formatResult(array $diff, string $format): string
         'stylish' => Stylish\formatResult($diff),
         'plain' => Plain\formatResult($diff),
         'json' => Json\formatResult($diff),
-        default => throw new Exception("Unsupportable format: '{$format}'")
+        default => throw new Exception("Unsupportable format: '{$format}'\n")
     };
 }
