@@ -15,6 +15,7 @@
         }
     ],
     "bin": [
+        "bin/gendiff"
     ],
     "autoload": {
         "files": [
