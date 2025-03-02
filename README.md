@@ -1,6 +1,6 @@
 # Differ
 
-This is educational project. CLI app buids diff of two files (JSON and YAML supported) in different formats (stylish, plain, json).
+This is educational project. CLI app builds diff of two files (JSON and YAML supported) in different formats (stylish, plain, json).
 
 ### Tests, Hexlet tests and Code Climate status:
 [![Tests](https://github.com/asommar/php-project-48/actions/workflows/package-ci.yml/badge.svg)](https://github.com/asommar/php-project-48/actions/workflows/package-ci.yml)
