@@ -4,6 +4,9 @@ namespace Differ\Formatters\Stylish;
 
 const INDENT_SYMBOL = ' ';
 const INDENT_COUNT = 4;
+const PROPERTY_DELETED = '-';
+const PROPERTY_ADDED = '+';
+const PROPERTY_NOT_CHANGED = ' ';
 
 function formatValue(mixed $value): string
 {
@@ -25,11 +28,11 @@ function getIndent(int $depth, int $offset): string
 function formatResult(array $diff, int $depth = 1): string
 {
     $lines = array_map(function ($item) use ($depth) {
-        $indent = getIndent($depth, 2);
+        $indent = getIndent($depth, INDENT_COUNT / 2);
         $mark = match ($item['mark'] ?? null) {
-            -1 => '-',
-            1 => '+',
-            default => ' ',
+            -1 => PROPERTY_DELETED,
+            1 => PROPERTY_ADDED,
+            default => PROPERTY_NOT_CHANGED,
         };
 
         if (key_exists('value', $item) && key_exists('key', $item)) {
