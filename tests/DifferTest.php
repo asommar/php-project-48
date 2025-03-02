@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use Exception;
 use PHPUnit\Framework\TestCase;
 
 use function Differ\Differ\genDiff;
@@ -19,11 +20,16 @@ class DifferTest extends TestCase
         $diff = file_get_contents($this->getFixtureFullPath("$format.txt"));
         $jsonPath1 = $this->getFixtureFullPath("file1.json");
         $jsonPath2 = $this->getFixtureFullPath("file2.json");
+        $yamlPath1 = $this->getFixtureFullPath("file1.yaml");
+        $yamlPath2 = $this->getFixtureFullPath("file2.yaml");
+
+        if (file_exists($jsonPath1) === false) {
+            throw new Exception("No such file or directory: '{$jsonPath1}'");
+        }
+
         $actual1 = genDiff($jsonPath1, $jsonPath2, $format);
         $this->assertEquals($diff, $actual1);
 
-        $yamlPath1 = $this->getFixtureFullPath("file1.yaml");
-        $yamlPath2 = $this->getFixtureFullPath("file2.yaml");
         $actual2 = genDiff($yamlPath1, $yamlPath2, $format);
         $this->assertEquals($diff, $actual2);
 
