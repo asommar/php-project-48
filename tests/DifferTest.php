@@ -2,7 +2,6 @@
 
 namespace Tests;
 
-use Exception;
 use PHPUnit\Framework\TestCase;
 
 use function Differ\Differ\genDiff;
@@ -15,7 +14,7 @@ class DifferTest extends TestCase
         return realpath(implode('/', $parts));
     }
 
-    private function testGenDiff(string $format = 'stylish'): void
+    private function testGenDiff(string $format): void
     {
         $diff = file_get_contents($this->getFixtureFullPath("$format.txt"));
         $jsonPath1 = $this->getFixtureFullPath("file1.json");

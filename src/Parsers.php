@@ -10,10 +10,11 @@ use Symfony\Component\Yaml\Yaml;
  */
 function getFileData(string $filePath): array
 {
-    $file = file_get_contents($filePath);
-    if ($file === false) {
+    if (file_exists($filePath) === false) {
         throw new Exception("No such file or directory: '{$filePath}'");
     }
+
+    $file = file_get_contents($filePath);
 
     if (str_ends_with(strtolower($filePath), '.json')) {
         $result = json_decode($file, true);
