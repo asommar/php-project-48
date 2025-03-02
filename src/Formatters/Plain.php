@@ -31,20 +31,20 @@ function makeLine(string $property, int $mark, string $value = null, string $new
 function formatResult(array $diff, array $acc = [], string $path = ''): string
 {
     $result = array_reduce($diff, function (array $acc, array $item) use ($path) {
-        $path = $path === '' ? $item['key'] : "{$path}.{$item['key']}";
+        $pathCurrent = $path === '' ? $item['key'] : "{$path}.{$item['key']}";
         $value = $item['value'];
 
         if (is_array($value) && array_is_list($value)) {
-            return [...$acc, formatResult($value, [], $path)];
+            return [...$acc, formatResult($value, [], $pathCurrent)];
         }
 
         if ($item['mark'] === 0 || $item['isUpdatedValue'] === false) {
             return $acc;
         }
 
-        $value = formatValue($value);
-        $newValue = $item['isUpdatedValue'] === true ? formatvalue($item['newValue']) : null;
-        $line = makeLine($path, $item['mark'], $value, $newValue);
+        $valueFormated = formatValue($value);
+        $newValue = $item['isUpdatedValue'] === true ? formatValue($item['newValue']) : null;
+        $line = makeLine($pathCurrent, $item['mark'], $valueFormated, $newValue);
 
         return [...$acc, $line];
     }, $acc);

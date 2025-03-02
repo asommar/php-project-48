@@ -41,17 +41,15 @@ function formatResult(array $diff, int $depth = 1): string
         }
         if (is_array($value)) {
             if (!array_is_list($value)) {
-                $valuePrepared = [];
-                foreach ($value as $keyAssoc => $valueAssoc) {
-                    $valuePrepared[] = ['value' => $valueAssoc, 'key' => $keyAssoc];
-                }
-                $value = $valuePrepared;
+                $arrayValue = array_map(fn ($item) => ['value' => $value[$item], 'key' => $item], array_keys($value));
+            } else {
+                $arrayValue = $value;
             }
-            $value = formatResult($value, $depth + 1);
+            $valuePrepared = formatResult($arrayValue, $depth + 1);
         } else {
-            $value = formatValue($value);
+            $valuePrepared = formatValue($value);
         }
-        return "{$indent}{$mark} {$key}: {$value}";
+        return "{$indent}{$mark} {$key}: {$valuePrepared}";
     }, $diff);
     $indentBrace = getIndent($depth - 1, 0);
     $result = implode("\n", $lines);

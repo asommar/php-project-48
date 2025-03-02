@@ -15,6 +15,9 @@ function getFileData(string $filePath): array
     }
 
     $file = file_get_contents($filePath);
+    if (false === $file) {
+        throw new Exception("Unable to read file: '{$filePath}'\n");
+    }
 
     if (str_ends_with(strtolower($filePath), '.json')) {
         $result = json_decode($file, true);

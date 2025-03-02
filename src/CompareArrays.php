@@ -11,8 +11,9 @@ function putDiffMark(mixed $key, mixed $value, int $mark, bool $isUpdatedValue =
 function compareTrees(array $array1, array $array2): array
 {
     $keys = array_unique(array_merge(array_keys($array1), array_keys($array2)));
-    sort($keys);
-    return array_reduce($keys, function ($carry, $key) use ($array1, $array2) {
+    $keysSorted = \Functional\sort($keys, fn ($first, $second) => $first <=> $second);
+
+    return array_reduce($keysSorted, function ($carry, $key) use ($array1, $array2) {
         $keyExist1 = key_exists($key, $array1);
         $keyExist2 = key_exists($key, $array2);
         //key1 exist, key2 not
