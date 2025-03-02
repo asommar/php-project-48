@@ -11,7 +11,7 @@ function formatValue(mixed $value): string
         true => "true",
         false => "false",
         null => "null",
-        default => "'{$value}'",
+        default => is_int($value) ? "$value" : "'{$value}'",
     };
 }
 
