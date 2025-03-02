@@ -5,7 +5,7 @@ lint:
 fix-lint:
 	composer exec --verbose phpcbf -- --standard=PSR12 src bin tests;
 test:
-	composer exec --verbose phpunit tests;
+	composer exec --verbose phpunit tests -- --colors=always --testdox;
 test-coverage:
 	composer run test-coverage;
 testcov-html:
