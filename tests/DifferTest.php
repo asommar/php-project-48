@@ -15,17 +15,13 @@ class DifferTest extends TestCase
         return realpath(implode('/', $parts));
     }
 
-    private function testGenDiff(string $format): void
+    private function testGenDiff(string $format = 'stylish'): void
     {
         $diff = file_get_contents($this->getFixtureFullPath("$format.txt"));
         $jsonPath1 = $this->getFixtureFullPath("file1.json");
         $jsonPath2 = $this->getFixtureFullPath("file2.json");
         $yamlPath1 = $this->getFixtureFullPath("file1.yaml");
         $yamlPath2 = $this->getFixtureFullPath("file2.yaml");
-
-        if (file_exists($jsonPath1) === false) {
-            throw new Exception("No such file or directory: '{$jsonPath1}'");
-        }
 
         $actual1 = genDiff($jsonPath1, $jsonPath2, $format);
         $this->assertEquals($diff, $actual1);
