@@ -2,8 +2,8 @@
 
 namespace Differ\Formatters\Stylish;
 
-define('INDENT_SYMBOL', ' ');
-define('INDENT_COUNT', 4);
+const INDENT_SYMBOL = ' ';
+const INDENT_COUNT = 4;
 
 function formatValue(mixed $value): string
 {

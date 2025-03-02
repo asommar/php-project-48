@@ -9,14 +9,14 @@ use function Differ\CompareArrays\compareTrees;
 use function Differ\Formatter\formatResult;
 use function Differ\Parsers\getFileData;
 
-function genDiff(string $filePath1, string $filePath2, string $format = DEFAULT_FORMAT): string
+function genDiff(string $filePath1, string $filePath2, string $format = DEFAULT_FORMAT): string|null
 {
     try {
         $data1 = getFileData($filePath1);
         $data2 = getFileData($filePath2);
     } catch (Exception $e) {
         echo $e->getMessage();
-        die();
+        return null;
     }
 
     $resultArray = compareTrees($data1, $data2);
@@ -25,6 +25,6 @@ function genDiff(string $filePath1, string $filePath2, string $format = DEFAULT_
         return formatResult($resultArray, $format);
     } catch (Exception $e) {
         echo $e->getMessage();
-        die();
+        return null;
     }
 }
