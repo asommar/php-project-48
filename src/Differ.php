@@ -2,12 +2,14 @@
 
 namespace Differ\Differ;
 
+const DEFAULT_FORMAT = 'stylish';
+
 use Exception;
 use function Differ\CompareArrays\compareTrees;
 use function Differ\Formatter\formatResult;
 use function Differ\Parsers\getFileData;
 
-function genDiff(string $filePath1, string $filePath2, string $format): string
+function genDiff(string $filePath1, string $filePath2, string $format = DEFAULT_FORMAT): string
 {
     try {
         $data1 = getFileData($filePath1);
