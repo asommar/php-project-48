@@ -38,7 +38,7 @@ function parseFileData(string $filePath, string $file): array
     if (str_ends_with(strtolower($filePath), '.json')) {
         $result = json_decode($file, true);
     } elseif (str_ends_with(strtolower($filePath), '.yaml') || str_ends_with(strtolower($filePath), '.yml')) {
-        $result = Yaml::parseFile($filePath);
+        $result = Yaml::parse($file);
     } else {
         throw new Exception("File '{$filePath}' has unsupported extension\n");
     }
