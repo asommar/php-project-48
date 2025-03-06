@@ -11,4 +11,4 @@ test-coverage:
 testcov-html:
 	composer run test-coverage-html;
 stan:
-	vendor/bin/phpstan analyse bin src tests --level=8;
+	composer run stan;

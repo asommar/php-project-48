@@ -30,7 +30,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests"
+            "Differ\\Tests\\": "tests"
         }
     },
     "require": {
@@ -44,6 +44,9 @@
         ],
         "test-coverage-html": [
             "XDEBUG_MODE=coverage phpunit tests --coverage-html cov.html"
+        ],
+        "stan": [
+            "phpstan analyse bin src tests --level=8"
         ]
     }
 }
