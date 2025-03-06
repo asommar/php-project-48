@@ -7,24 +7,17 @@ const DEFAULT_FORMAT = 'stylish';
 use Exception;
 use function Differ\CompareArrays\compareTrees;
 use function Differ\Formatter\formatResult;
-use function Differ\Parsers\getFileData;
+use function Differ\Parsers\getData;
 
-function genDiff(string $filePath1, string $filePath2, string $format = DEFAULT_FORMAT): string|null
+/**
+ * @throws Exception
+ */
+function genDiff(string $filePath1, string $filePath2, string $format = DEFAULT_FORMAT): string
 {
-    try {
-        $data1 = getFileData($filePath1);
-        $data2 = getFileData($filePath2);
-    } catch (Exception $e) {
-        echo $e->getMessage();
-        return null;
-    }
+    $data1 = getData($filePath1);
+    $data2 = getData($filePath2);
 
     $resultArray = compareTrees($data1, $data2);
 
-    try {
-        return formatResult($resultArray, $format);
-    } catch (Exception $e) {
-        echo $e->getMessage();
-        return null;
-    }
+    return formatResult($resultArray, $format);
 }

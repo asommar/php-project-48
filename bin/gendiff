@@ -32,5 +32,11 @@ $params = ['version' => 'gendiff 0.0.1'];
 $command = Docopt::handle($doc, $params);
 //todo if need check the answer
 $format = $command['--format'];
-$result = genDiff($command['<firstFile>'], $command['<secondFile>'], $format) . PHP_EOL;
+try {
+    $result = genDiff($command['<firstFile>'], $command['<secondFile>'], $format) . PHP_EOL;
+} catch (Exception $e) {
+    echo $e->getMessage();
+    return null;
+}
+
 print_r($result);
