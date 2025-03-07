@@ -35,17 +35,34 @@ function getFileData(string $filePath): string
  */
 function parseFileData(string $filePath, string $file): array
 {
-    if (str_ends_with(strtolower($filePath), '.json')) {
-        $result = json_decode($file, true);
-    } elseif (str_ends_with(strtolower($filePath), '.yaml') || str_ends_with(strtolower($filePath), '.yml')) {
-        $result = Yaml::parse($file);
-    } else {
-        throw new Exception("File '{$filePath}' has unsupported extension\n");
-    }
+    $extension = pathinfo($filePath, PATHINFO_EXTENSION);
+    return match ($extension) {
+        'json' => parseJson($file, $filePath),
+        'yaml', 'yml' => parseYaml($file, $filePath),
+        default => throw new Exception(message: "File '{$filePath}' has unsupported extension\n"),
+    };
+}
 
-    if (!is_array($result)) {
-        throw new Exception("Parsing file '{$filePath}' failed\n");
+/**
+ * @throws Exception
+ */
+function parseYaml(string $file, string $filePath): array
+{
+    try {
+        return Yaml::parse($file);
+    } catch (Exception $e) {
+        throw new Exception(message: "Failed to parse YAML file '{$filePath}': {$e->getMessage()}\n");
     }
+}
 
-    return $result;
+/**
+ * @throws Exception
+ */
+function parseJson(string $file, string $filePath): array
+{
+    try {
+        return json_decode(json: $file, associative: true, flags: JSON_THROW_ON_ERROR);
+    } catch (Exception $e) {
+        throw new Exception(message: "Failed to parse JSON file '{$filePath}': {$e->getMessage()}");
+    }
 }
